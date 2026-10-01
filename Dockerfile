@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    PORT=5060
+    PORT=8000
 
 WORKDIR /app
 
@@ -15,7 +15,7 @@ COPY . .
 RUN useradd --create-home appuser
 USER appuser
 
-EXPOSE 5060
+EXPOSE 8000
 
-# Listens on $PORT (5060 unless the platform overrides it)
+# Listens on $PORT (8000 unless the platform overrides it)
 CMD ["sh", "-c", "exec gunicorn --bind 0.0.0.0:${PORT} --workers 2 --access-logfile - app:app"]

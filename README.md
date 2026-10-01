@@ -21,10 +21,10 @@ Set HOST=0.0.0.0 if you want other devices on your network to reach it.
 ## Deploy with Docker / Northflank
 
     docker build -t pokemon-cryptic .
-    docker run -p 5060:5060 pokemon-cryptic
+    docker run -p 8000:8000 pokemon-cryptic
 
-The container runs gunicorn on $PORT (default 5060). On Northflank, create a
-service from this repo using the Dockerfile build, add an HTTP port 5060 under
+The container runs gunicorn on $PORT (8000 in the container). On Northflank, create a
+service from this repo using the Dockerfile build, add an HTTP port 8000 under
 networking, and set the health check path to /healthz. Public Northflank URLs
 are served over HTTPS on port 443, so the Chrome port-5060 block does not apply
 there.
